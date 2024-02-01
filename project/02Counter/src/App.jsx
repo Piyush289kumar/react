@@ -16,7 +16,7 @@ function App() {
       setCounter(counter--);
     }
   };
-  
+
   return (
     <>
       <h1>Counter Project</h1>
@@ -31,4 +31,5 @@ function App() {
     </>
   );
 }
+
 export default App;
