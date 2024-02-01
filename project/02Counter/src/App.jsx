@@ -18,6 +18,7 @@ function App() {
   };
 
   return (
+
     <>
       <h1>Counter Project</h1>
       <h3>Counter : {counter}</h3>
@@ -29,6 +30,7 @@ function App() {
       <br />
       <p>Footer : {counter}</p>
     </>
+
   );
 }
 
