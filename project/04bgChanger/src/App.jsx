@@ -9,7 +9,7 @@ function App() {
   return (
     <>
      <div className='bg-slate-800 h-screen w-screen grid place-items-center space-x-1'>
-      <div className=' text-white font-bold mx-5 space-x-6'>
+      <div className=' text-white font-bold mx-5 space-x-6 bg-white rounded-lg p-4'>
         <button className="bg-red-500 hover:bg-red-900 border-none" id="one">Red</button>
         <button className="bg-yellow-500 hover:bg-yellow-900 border-none" id="one">Yellow</button>
         <button className="bg-green-500 hover:bg-green-900 border-none" id="one">Green</button>
