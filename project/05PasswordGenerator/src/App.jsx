@@ -10,34 +10,30 @@ function App() {
   let [password, setPassword] = useState("");
 
   // Password Generator Logic Block Start
-  const passwordGenerator = useCallback(
-    () => {
-      let pwdStr = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+  const passwordGenerator = useCallback(() => {
+    let pwdStr = "";
+    let strLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 
-      if (nums) pwdStr += "0123456789";
-      if (char) pwdStr += "@!#$%^&*_";
+    if (nums) strLetters += "0123456789";
+    if (char) strLetters += "@!#$%^&*_";
 
-      for (let idx = 1; idx < length; idx++) {
-        let randomCharIdx = Math.floor(Math.random() * pwdStr.length + 1);
-        password += pwdStr.charAt(randomCharIdx);
-      }
+    for (let idx = 1; idx <= length; idx++) {
+      let randomCharIdx = Math.floor(Math.random() * strLetters.length + 1);
+      pwdStr += strLetters.charAt(randomCharIdx);
+    }
 
-      setPassword(pwdStr);
+    setPassword(pwdStr);
 
-    },
-    [length, nums, char, setPassword]
-  );
+  }, [length, nums, char, setPassword]);
   // Password Generator Logic Block End
 
   // Password Generator Function Call Block Start
-
-  // Password Generator Function Call Block End
-
   // Password Show On UI Block Start
   useEffect(() => {
     passwordGenerator();
-  }, [length, nums, char, setPassword]);
+  }, [length, nums, char, passwordGenerator]);
   // Password Show On UI Block End
+  // Password Generator Function Call Block End
 
   return (
     <>
@@ -68,10 +64,10 @@ function App() {
               <input
                 type="range"
                 id="length"
-                min={0}
-                max={20}
+                min={4}
+                max={12}
                 value={length}
-                onChange={(e)=>setlength(e.target.value)}
+                onChange={(e) => setlength(e.target.value)}
                 className="cursor-pointer"
               />
               <label htmlFor="length" className="px-2">
@@ -84,6 +80,9 @@ function App() {
                 type="checkbox"
                 id="numIn"
                 className="cursor-pointer rounded-xl"
+                onChange={() => {
+                  setNums((prev) => !prev);
+                }}
               />
               <label htmlFor="numIn" className="px-2">
                 Numbers
@@ -95,6 +94,9 @@ function App() {
                 type="checkbox"
                 id="char"
                 className="cursor-pointer rounded-xl"
+                onChange={() => {
+                  setChar((prev) => !prev);
+                }}
               />
               <label htmlFor="char" className="px-2">
                 Special Character
