@@ -5,17 +5,23 @@ import './App.css'
 
 function App() {
 
-  const [count, setCount] = useState(() => 1);
+  
+
+  const [count, setCount] = useState(()=> 1);
 
   function addNumber() {
     setCount((prev) => prev + 1)
+  }
+
+  function removeNumber() {
+    setCount((prev) => prev - 1)
   }
 
   return (
     <>
       <button onClick={addNumber}>+</button>
       <h1>{count}</h1>
-      <button>-</button>
+      <button onClick={removeNumber}>-</button>
     </>
   )
 }
