@@ -30,7 +30,7 @@ function App() {
       <h1>{data}</h1>
       
       {items.map(item => {
-        return <pre>{JSON.stringify(item)}</pre>
+        return <pre>{JSON.stringify(item.id)}</pre>
       })}
 
     </>
