@@ -9,6 +9,7 @@ import Home from './components/Home/Home.jsx'
 import About from './components/About/About.jsx'
 import Contact from './components/Contact-us/Contact.jsx'
 import User from './components/User/User.jsx';
+import Github, {githubInfoLoader} from './components/Github/Github.jsx';
 
 
 
@@ -19,6 +20,7 @@ const router = createBrowserRouter(
       <Route path='about' element={<About/>}/>
       <Route path='contact-us' element={<Contact/>}/>
       <Route path='user/:userId' element={<User/>}/>
+      <Route loader={githubInfoLoader} path='github' element={<Github/>} />
     </Route>
   )
 )
@@ -26,5 +28,5 @@ const router = createBrowserRouter(
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <RouterProvider router={router}/>
-  </React.StrictMode>,
+  </React.StrictMode>
 )
