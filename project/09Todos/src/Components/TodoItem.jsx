@@ -1,17 +1,22 @@
 import React, { useState } from 'react'
-import { useTodos } from '../Context/TodoContext';
+import { useTodo } from '../Context/TodoContext';
+
 function TodoItem({ todo }) {
 
-    const { todos, addTodos, updatedTodos, deleteTodos, todoComplete } = useTodos()
+
+    console.log(todo);
     const [isTodoEditable, setIsTodoEditable] = useState(false)
     const [todoMsg, setTodoMsg] = useState(todo.todo)
+    const { updateTodo, deleteTodo, toggleComplete } = useTodo()
 
     const editTodo = () => {
-        updatedTodos(todo.id, { ...todo, todo: todoMsg })
+        updateTodo(todo.id, { ...todo, todo: todoMsg })
         setIsTodoEditable(false)
     }
-    const todoCompleted = ()=>{
-        todoComplete(todo.id)
+    const todoCompleted = () => {
+        
+        console.log(`todo.id : ` + todo.id);
+        toggleComplete(todo.id)
     }
 
 
@@ -24,7 +29,7 @@ function TodoItem({ todo }) {
                 type="checkbox"
                 className="cursor-pointer"
                 checked={todo.completed}
-                onChange={toggleCompleted}
+                onChange={todoCompleted}
             />
             <input
                 type="text"
