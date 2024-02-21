@@ -4,12 +4,12 @@ import { Client, ID, Databases, Storage, Query } from "appwrite";
 export class DBService {
     client = new Client();
     database;
-    storage;
+    bucket;
 
     constructor() {
         this.client.setEndpoint(config.appWriteUrl).setProject(config.projectId);
         this.database = new Databases(this.client);
-        this.storage = new Storage(this.client);
+        this.bucket = new Storage(this.client);
     }
 
     async createPost({ title, slug, content, featuredImage, status, userId }) {
@@ -99,6 +99,21 @@ export class DBService {
         }
     }
 
+
+    // File Upload Service
+
+    async uploadFile(file) {
+        try {
+            return await this.bucket.createFile(
+                config.buketId,
+                ID.unique(),
+                file
+            )
+        } catch (error) {
+            console.log(`Upload File :: Error ${error}`);
+            return false
+        }
+    }
 
 
 
