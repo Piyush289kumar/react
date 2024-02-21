@@ -55,9 +55,25 @@ export class DBService {
 
     }
 
+    async deletePost(slug) {
+        try {
+
+            await this.database.deleteDocument(slug){
+                config.databaseId,
+                    config.collectionId,
+                    slug
+            }
+            return true;
+
+        } catch (error) {
+            console.log(`Delete Post :: Error ${error}`);
+            return false
+        }
+    }
 
 
-    
+
+
 
 
 }
