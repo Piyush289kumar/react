@@ -58,12 +58,12 @@ export class DBService {
     async deletePost(slug) {
         try {
 
-            await this.database.deleteDocument(slug){
+            await this.database.deleteDocument(
                 config.databaseId,
-                    config.collectionId,
-                    slug
-            }
-            return true;
+                config.collectionId,
+                slug
+            )
+            return true
 
         } catch (error) {
             console.log(`Delete Post :: Error ${error}`);
@@ -80,7 +80,21 @@ export class DBService {
                 slug
             )
         } catch (error) {
-            console.log(`Delete Post :: Error ${error}`);
+            console.log(`Get Post :: Error ${error}`);
+            return false
+        }
+    }
+
+
+    async getPosts() {
+        try {
+            return await this.database.listDocuments(
+                config.databaseId,
+                config.collectionId,
+                [Query.equal("status", "active")]
+            )
+        } catch (error) {
+            console.log(`Get Posts :: Error ${error}`);
             return false
         }
     }
