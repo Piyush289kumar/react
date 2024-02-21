@@ -71,6 +71,20 @@ export class DBService {
         }
     }
 
+    async getPost(slug) {
+        try {
+
+            return await this.database.getDocument(
+                config.databaseId,
+                config.collectionId,
+                slug
+            )
+        } catch (error) {
+            console.log(`Delete Post :: Error ${error}`);
+            return false
+        }
+    }
+
 
 
 
