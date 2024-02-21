@@ -131,6 +131,21 @@ export class DBService {
         }
     }
 
+    async getFilePreview(fileId) {
+        try {
+
+            return this.bucket.getFilePreview(
+                config.buketId,
+                fileId
+            )
+
+        } catch (error) {
+
+            console.log(`Get File Preview :: Error ${error}`);
+            return false
+        }
+    }
+
 
 
 
