@@ -109,12 +109,27 @@ export class DBService {
                 ID.unique(),
                 file
             )
+
+            return true
         } catch (error) {
             console.log(`Upload File :: Error ${error}`);
             return false
         }
     }
 
+
+    async deleteFile(fileId) {
+        try {
+            await this.bucket.deleteFile(
+                config.buketId,
+                fileId
+            )
+            return true
+        } catch (error) {
+            console.log(`Delete File :: Error ${error}`);
+            return false
+        }
+    }
 
 
 
