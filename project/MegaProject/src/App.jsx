@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import { UseDispatch, useDispatch, useSelector } from 'react-redux'
-
+import { useDispatch, useSelector } from 'react-redux'
 import './App.css'
-import authFeature, { login, logout } from './store/features/authFeature'
+import { login, logout } from './store/features/authFeature'
 import authService from './appwrite/auth'
+import Header from './components/Header/Header'
+import Footer from './components/Footer/Footer'
 
 function App() {
 
@@ -34,7 +35,7 @@ function App() {
         <div className='w-full block'>
           <Header />
           <main>
-            TODO:  <Outlet />
+            {/* TODO:  <Outlet /> */}
           </main>
           <Footer />
         </div>
