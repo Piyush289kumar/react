@@ -1,4 +1,6 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react'
+
 import { useForm } from 'react-hook-form'
 import { Button, Logo, Input } from './index'
 import { useDispatch } from 'react-redux'
@@ -14,7 +16,7 @@ function Signup() {
     const navigate = useNavigate()
 
 
-    const signUp = async (data) => {
+    const signup = async (data) => {
         setError('')
 
         try {
@@ -55,7 +57,7 @@ function Signup() {
                 </p>
                 {error && <p className="text-red-600 mt-8 text-center">{error}</p>}
 
-                <form onSubmit={handleSubmit(create)}>
+                <form onSubmit={handleSubmit(signup)}>
                     <div className='space-y-5'>
                         <Input
                             label="Full Name: "
