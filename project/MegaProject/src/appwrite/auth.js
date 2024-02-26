@@ -46,6 +46,8 @@ export class AuthService {
     async getCurrentUser() {
         try {
             return await this.account.get();
+            console.log(`getCurrentUser :: Enter In a Function`);
+
         } catch (error) {
             console.log(`getCurrentUser :: Error ${error}`);
         }
