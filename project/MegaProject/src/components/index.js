@@ -8,6 +8,7 @@ import Input from './Input'
 import Select from './Select'
 import RTE from "./RTE";
 import Login from './Login'
+import Signup from './Signup'
 
 export {
     Header,
@@ -19,5 +20,6 @@ export {
     Input,
     Select,
     RTE,
-    Login
+    Login,
+    Signup
 }
