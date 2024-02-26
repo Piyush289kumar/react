@@ -9,6 +9,7 @@ import Select from './Select'
 import RTE from "./RTE";
 import Login from './Login'
 import Signup from './Signup'
+import PostForm from './post-from/PostForm'
 
 export {
     Header,
@@ -21,5 +22,6 @@ export {
     Select,
     RTE,
     Login,
-    Signup
+    Signup,
+    PostForm
 }
