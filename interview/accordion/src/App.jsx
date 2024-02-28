@@ -7,7 +7,9 @@ function App() {
 
   return (
     <>
-      <Accordion />
+      <div className='w-full grid place-items-center'>
+        <Accordion />
+      </div>
     </>
   )
 }
