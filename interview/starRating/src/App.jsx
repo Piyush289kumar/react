@@ -5,11 +5,12 @@ import './App.css'
 import StartRating from './components/StartRating/StartRating'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <>
-      <StartRating numOfStar={5}/>
+    < >
+      <div className='w-full h-screen bg-violet-600'>
+        <StartRating numOfStar={5} />
+      </div>
     </>
   )
 }

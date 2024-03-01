@@ -31,7 +31,7 @@ function StartRating({ numOfStar = 5 }) {
                     idx++;
                     return (<FaStar
                         key={idx}
-                        className={idx <= (rating || hoverPosition) ? 'text-yellow-400' : 'text-slate-600'}
+                        className={idx <= (rating || hoverPosition) ? 'text-yellow-400' : 'text-white'}
                         size={80}
                         onClick={() => handleClick(idx)}
                         onMouseEnter={() => handleEnter(idx)}
