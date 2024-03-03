@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './App.css'
+import LoadMore from './components/loadMore/LoadMore';
 
 function App() {
 
@@ -9,9 +10,8 @@ function App() {
 
   return (
     <>
-      <div>
-        <button onClick={notify} className='bg-violet-600 text-white font-bold px-5 py-2 rounded-lg'>Notify!</button>
-        <ToastContainer />
+      <div className='w-full h-screen bg-violet-600'>
+       <LoadMore url={'https://picsum.photos/v2/list'} />
       </div>
     </>
   )
