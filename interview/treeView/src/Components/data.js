@@ -13,9 +13,11 @@ const menus = [
         ]
     },
     {
-        lable: 'Home'
+        lable: 'About'
     },
     {
-        lable: 'Home'
+        lable: 'Contact'
     },
 ]
+
+export default menus
