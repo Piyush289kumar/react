@@ -6,12 +6,15 @@ function App() {
 
   const [count, setCount] = useState(0)
 
-  const increment = () => {
-    setCount(count + 1)
-  }
+  useEffect(() => {
+    console.log('Component rendered successfully');
+  }, [])
+
   return (
     <>
 
+      <button onClick={() => setCount(count + 1)}>Click Me</button>
+      
     </>
   )
 }
