@@ -12,9 +12,10 @@ function App() {
 
   return (
     <>
-
-      <button onClick={() => setCount(count + 1)}>Click Me</button>
-      
+      <div>
+        <button onClick={() => setCount(count + 1)}>Click Me</button>
+        <p>You Clike {count} Times</p>
+      </div>
     </>
   )
 }
