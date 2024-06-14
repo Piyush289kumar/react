@@ -14,7 +14,7 @@ function App() {
         <br />
         <br />
         <br />
-        <input type="checkbox" name="" id="" />
+        <input type="checkbox" name="check" id="chekcBox" onChange={() => console.log('change')} />
 
       </div>
 
