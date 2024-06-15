@@ -6,7 +6,6 @@ function App() {
     <>
       
     <h1>Piyush Kumar Raikwar</h1>
-    
     </>
   )
 }
