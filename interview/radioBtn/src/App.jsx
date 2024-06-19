@@ -7,11 +7,7 @@ function App() {
   return (
     <>
       <div>
-        <h1>Toggle : {isCliked ? "ON" : "OFF"}</h1>
-        <br />
-        <br />
-        <br />
-        <input type="checkbox" name="check" id="chekcBox" onChange={(prev) => { setisCliked(!isCliked) }} style={{ height: 250, width: 500 }} />
+               
       </div>
     </>
   )
