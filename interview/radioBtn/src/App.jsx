@@ -9,7 +9,7 @@ function App() {
   return (
     <>
       <div>
-        <input type="text" name="inputColor" id="inputColor" />
+        <input type="text" name="inputColor" id="inputColor" onChange={(e)=>setInputColor(e.target.value)} />
       </div>
     </>
   )
