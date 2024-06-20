@@ -5,17 +5,18 @@ import './App.css'
 function App() {
   const [inputColor, setInputColor] = useState('red');
 
-  const randomNumberGenerate = (deg = 0, percentage = 100) => {
+  const randomNumberGenerate = (percentage = 100) => {
     const randomColorR = Math.floor(((Math.random() * 254) + 1))
     const randomColorG = Math.floor(((Math.random() * 254) + 1))
     const randomColorB = Math.floor(((Math.random() * 254) + 1))
 
-    return `${deg}deg, rgb(${randomColorR},${randomColorG},${randomColorB}) ${percentage}%`;    
+    return `rgb(${randomColorR},${randomColorG},${randomColorB}) ${percentage}%`;
   }
 
-  function generateNewColor(params) {
-    `linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%)`;
-    // `linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%)`;
+  function generateNewColor() {
+    const generateNewColorCode = `linear-gradient(90deg, ${randomNumberGenerate(0)}, ${randomNumberGenerate(35)}, ${randomNumberGenerate(100)})`;
+    console.log('generateNewColorCode', generateNewColorCode);
+    setInputColor(generateNewColorCode);
   }
 
 
@@ -27,8 +28,8 @@ function App() {
       <br />
       <br />
       <div>
-        <button onClick={() => randomNumberGenerate()}>Click Me</button>
-        <input type="text" name="inputColor" id="inputColor" onChange={(e) => setInputColor(e.target.value)} />
+        <button onClick={() => generateNewColor}>Click Me</button>
+        {/* <input type="text" name="inputColor" id="inputColor" onChange={(e) => setInputColor(e.target.value)} /> */}
       </div>
     </>
   )
