@@ -30,6 +30,7 @@ function App() {
         <dir>
           <p>{`${firstColorCode} -> ${secondColorCode} -> ${thirdColorCode}`}</p>
         </dir>
+        <br />
         <button onClick={() => generateNewColor()}>Click Me</button>
         {/* <input type="text" name="inputColor" id="inputColor" onChange={(e) => setInputColor(e.target.value)} /> */}
       </div>
