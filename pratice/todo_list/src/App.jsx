@@ -7,7 +7,7 @@ function App() {
 
   return (
     <>
-    <div className='w-full h-screen flex justify-center  bg-zinc-400'>
+    <div className='w-full h-screen flex justify-center bg-zinc-400'>
       <TodoBox />
     </div>
     </>
