@@ -12,7 +12,6 @@ function TodoBox() {
   const dispatch = useDispatch();
 
   const handleAddTask = () => {
-    console.log(`taskInputText`, taskInputText);
     dispatch(addTaskHandler({ taskInputText }));
   }
   const handleCheckTask = (taskId) => {

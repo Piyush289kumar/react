@@ -35,13 +35,13 @@ const todosSlice = createSlice({
     checkTaskHandler: (state, action) => {
       const task = state.find((task) => task.id === action.payload.taskId);
       if (task) {
-        task.isCompleted = true;
+        task.isCompleted = !task.isCompleted;
       }
     },
     deleteTask: (state, action) => {
       const task = state.find((task) => task.id === action.payload.taskId);
       if (task) {
-        task.isActive = false;
+        task.isActive = !task.isActive;
       }
     },
   },
