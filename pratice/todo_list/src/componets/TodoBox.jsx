@@ -84,10 +84,7 @@ function TodoBox() {
                   onChange={() => checkTaskHandler(taskItem.id)}
                   className="mx-1"
                 />
-                <p
-                  className={`text-zinc-100 ${taskItem.isCompleted && "line-through"
-                    }`}
-                >
+                <p className={`text-zinc-100 ${taskItem.isCompleted && "line-through" }`} >
                   {taskItem.task}
                 </p>
                 <button
