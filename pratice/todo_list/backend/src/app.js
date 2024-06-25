@@ -1,12 +1,15 @@
 // import express from "express";
-const express = require("express");
+import express from "express";
+import cors from "cors";
+import init from "./controllers/todosController.js";
+
 const app = express();
 const port = 3000;
 
 app.use(express.json());
-app.get("/", (req, res) => {
-  res.json({ msg: "Sever is Live" });
-});
+app.use(cors());
+
+app.get("/", init);
 
 app.listen(port, (error) => {
   if (!error) {
