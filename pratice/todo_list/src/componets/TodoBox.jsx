@@ -1,29 +1,35 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useSelector, useDispatch } from 'react-redux'
-import { init, addTaskHandler, checkTaskHandler, deleteTask } from '../features/data/dataSlice'
+import { useSelector, useDispatch } from "react-redux";
+import {
+  init,
+  addTaskHandler,
+  checkTaskHandler,
+  deleteTask,
+} from "../features/data/dataSlice";
 function TodoBox() {
   const [taskInputText, setTaskInputText] = useState("");
-  const data = useSelector((state) => state.todos)
+  const data = useSelector((state) => state.todos);
   const dispatch = useDispatch();
   useEffect(() => {
-    axios.get('http://localhost:3000/')
-      .then(res => {
+    axios
+      .get("http://localhost:3000/")
+      .then((res) => {
         dispatch(init(res.data));
       })
-      .catch(error => {
-        console.log('Error', error.message);
+      .catch((error) => {
+        console.log("Error", error.message);
       });
-  }, [])
+  }, []);
   const handleAddTask = () => {
     dispatch(addTaskHandler({ taskInputText }));
-  }
+  };
   const handleCheckTask = (taskId) => {
-    dispatch(checkTaskHandler({ taskId }))
-  }
+    dispatch(checkTaskHandler({ taskId }));
+  };
   const handleDeleteTask = (taskId) => {
     dispatch(deleteTask({ taskId }));
-  }
+  };
   return (
     <div className="bg-zinc-700 px-4 py-6 m-9 rounded-2xl">
       <div className="flex justify-start">
@@ -54,7 +60,11 @@ function TodoBox() {
                   onChange={() => handleCheckTask(taskItem.id)}
                   className="mx-1"
                 />
-                <p className={`text-zinc-100 ${taskItem.isCompleted && "line-through"}`} >
+                <p
+                  className={`text-zinc-100 ${
+                    taskItem.isCompleted && "line-through"
+                  }`}
+                >
                   {taskItem.task}
                 </p>
                 <button
