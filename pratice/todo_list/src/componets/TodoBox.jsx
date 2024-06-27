@@ -9,7 +9,7 @@ function TodoBox() {
   useEffect(() => {
     axios.get('http://localhost:3000/')
       .then(res => {
-        dispatch(init(res.data))
+        dispatch(init(res.data));
       })
       .catch(error => {
         console.log('Error', error.message);
@@ -50,6 +50,7 @@ function TodoBox() {
               <div className="flex justify-start mt-5" key={idx}>
                 <input
                   type="checkbox"
+                  checked={taskItem.isCompleted}
                   onChange={() => handleCheckTask(taskItem.id)}
                   className="mx-1"
                 />

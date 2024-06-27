@@ -9,7 +9,7 @@ const init = async (req, res) => {
     {
       id: 2,
       task: "Task Two",
-      isCompleted: false,
+      isCompleted: true,
       isActive: true,
     },
     {
