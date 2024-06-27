@@ -1,22 +1,28 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useSelector, useDispatch } from 'react-redux'
-import { addTaskHandler, checkTaskHandler, deleteTask } from '../features/data/dataSlice'
+import { init, addTaskHandler, checkTaskHandler, deleteTask } from '../features/data/dataSlice'
 
 
 function TodoBox() {
 
   const [taskInputText, setTaskInputText] = useState("");
-
-  axios.get('http://localhost:3000/').then(res => {
-    console.log('Api Called Res');
-  }).catch(error => {
-    console.log('Error', error.message);
-  })
-
-
   const data = useSelector((state) => state.todos)
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    axios.get('http://localhost:3000/')
+      .then(res => {
+        dispatch(init(res.data))
+      })
+      .catch(error => {
+        console.log('Error', error.message);
+      });
+  }, [])
+
+
+
+
 
   const handleAddTask = () => {
     dispatch(addTaskHandler({ taskInputText }));

@@ -1,28 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
-const initialState = [
+let initialState = [
   {
     id: 1,
     task: "Task One",
     isCompleted: false,
     isActive: true,
   },
-  {
-    id: 2,
-    task: "Task Two",
-    isCompleted: false,
-    isActive: true,
-  },
-  {
-    id: 3,
-    task: "Task Three",
-    isCompleted: false,
-    isActive: true,
-  },
 ];
+
 const todosSlice = createSlice({
   name: "todos",
   initialState,
   reducers: {
+    init: (state, action) => {
+      return action.payload;
+    },
     addTaskHandler: (state, action) => {
       const newTask = {
         id: state.length + 1,
@@ -47,6 +39,6 @@ const todosSlice = createSlice({
   },
 });
 // Action creators are generated for each case reducer function
-export const { addTaskHandler, checkTaskHandler, deleteTask } =
+export const { init, addTaskHandler, checkTaskHandler, deleteTask } =
   todosSlice.actions;
 export default todosSlice.reducer;
