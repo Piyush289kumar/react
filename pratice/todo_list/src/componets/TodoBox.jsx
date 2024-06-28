@@ -11,7 +11,7 @@ function TodoBox() {
   const [taskInputText, setTaskInputText] = useState("");
   const data = useSelector((state) => state.todos);
   const dispatch = useDispatch();
-  useEffect(() => {
+  const refreshTodo = () => {
     axios
       .get("http://localhost:3000/")
       .then((res) => {
@@ -20,15 +20,42 @@ function TodoBox() {
       .catch((error) => {
         console.log("Error", error.message);
       });
+  };
+  useEffect(() => {
+    refreshTodo();
   }, []);
   const handleAddTask = () => {
-    dispatch(addTaskHandler({ taskInputText }));
+    axios
+      .post("http://localhost:3000/create", { task: taskInputText })
+      .then((res) => {
+        refreshTodo();
+      })
+      .catch((error) => {
+        console.log("Error", error.message);
+        alert("Error");
+      });
   };
   const handleCheckTask = (taskId) => {
-    dispatch(checkTaskHandler({ taskId }));
+    axios
+      .post(`http://localhost:3000/checkTodo/${taskId}`)
+      .then((res) => {
+        refreshTodo();
+      })
+      .catch((error) => {
+        console.log("Error", error.message);
+        alert("Error");
+      });
   };
   const handleDeleteTask = (taskId) => {
-    dispatch(deleteTask({ taskId }));
+    axios
+      .post(`http://localhost:3000/delete/${taskId}`)
+      .then((res) => {
+        refreshTodo();
+      })
+      .catch((error) => {
+        console.log("Error", error.message);
+        alert("Error");
+      });
   };
   return (
     <div className="bg-zinc-700 px-4 py-6 m-9 rounded-2xl">
@@ -57,7 +84,7 @@ function TodoBox() {
                 <input
                   type="checkbox"
                   checked={taskItem.isCompleted}
-                  onChange={() => handleCheckTask(taskItem.id)}
+                  onChange={() => handleCheckTask(taskItem._id)}
                   className="mx-1"
                 />
                 <p
@@ -69,7 +96,7 @@ function TodoBox() {
                 </p>
                 <button
                   className="bg-red-500 text-zinc-100 px-4 rounded-xl mx-1"
-                  onClick={() => handleDeleteTask(taskItem.id)}
+                  onClick={() => handleDeleteTask(taskItem._id)}
                 >
                   Delete
                 </button>

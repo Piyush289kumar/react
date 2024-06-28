@@ -15,15 +15,7 @@ const todosSlice = createSlice({
     init: (state, action) => {
       return action.payload;
     },
-    addTaskHandler: (state, action) => {
-      const newTask = {
-        id: state.length + 1,
-        task: action.payload.taskInputText,
-        isCompleted: false,
-        isActive: true,
-      };
-      state.push(newTask);
-    },
+   
     checkTaskHandler: (state, action) => {
       const task = state.find((task) => task.id === action.payload.taskId);
       if (task) {
