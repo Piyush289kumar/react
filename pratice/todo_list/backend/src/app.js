@@ -2,7 +2,12 @@
 import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
-import { init, createTodo, deleteTodo } from "./controllers/todosController.js";
+import {
+  init,
+  createTodo,
+  toggleTaskActiveStatus,
+  deleteTodo,
+} from "./controllers/todosController.js";
 import connectDB from "./db/index.js";
 
 const app = express();
@@ -15,7 +20,8 @@ app.use(cors());
 
 app.get("/", init);
 app.post("/create", createTodo);
-app.post('/delete/:taskId', deleteTodo);
+app.post("/delete/:taskId", deleteTodo);
+app.post("/checkTodo/:taskId", toggleTaskActiveStatus);
 
 connectDB()
   .then(() => {
