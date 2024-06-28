@@ -1,7 +1,7 @@
 // import express from "express";
 import express from "express";
 import cors from "cors";
-import init from "./controllers/todosController.js";
+import { init, createTodo } from "./controllers/todosController.js";
 import connectDB from "./db/index.js";
 
 const app = express();
@@ -11,6 +11,7 @@ app.use(express.json());
 app.use(cors());
 
 app.get("/", init);
+app.post("/create", createTodo);
 
 connectDB()
   .then(() => {

@@ -23,37 +23,13 @@ const init = async (req, res) => {
   return res.json(data);
 };
 
-export default init;
+// Create Todo
 
+const createTodo = async (req, res) => {
+  const { task } = req.body;
+  res.json({
+    task,
+  });
+};
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+export { init, createTodo };
