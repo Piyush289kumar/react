@@ -1,17 +1,21 @@
 // import express from "express";
 import express from "express";
+import bodyParser from "body-parser";
 import cors from "cors";
-import { init, createTodo } from "./controllers/todosController.js";
+import { init, createTodo, deleteTodo } from "./controllers/todosController.js";
 import connectDB from "./db/index.js";
 
 const app = express();
 const port = 3000;
 
 app.use(express.json());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
 app.get("/", init);
 app.post("/create", createTodo);
+app.post('/delete/:taskId', deleteTodo);
 
 connectDB()
   .then(() => {

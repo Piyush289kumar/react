@@ -30,11 +30,25 @@ const init = async (req, res) => {
 const createTodo = async (req, res) => {
   const { task } = req.body;
 
-  Todo.create({
-    task,
-  }).then(() => {
-    res.json({ ms: "Task is Created Done" });
-  });
+  try {
+    await Todo.create({ task });
+    res.json({ message: "Task is Created Done" });
+  } catch (error) {
+    res
+      .status(500)
+      .json({ message: "Task is not Created Done", error: error.message });
+  }
 };
 
-export { init, createTodo };
+const deleteTodo = async (req, res) => {
+  const { taskId } = req.params;
+  Todo.findByIdAndDelete(taskId)
+    .then(() => {
+      res.json({ ms: "Task is Deleted Done" });
+    })
+    .catch(() => {
+      res.json({ ms: "Task is not Deleted" });
+    });
+};
+
+export { init, createTodo, deleteTodo };
