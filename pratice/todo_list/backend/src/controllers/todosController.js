@@ -1,3 +1,5 @@
+import { Todo } from "../models/todoModel.js";
+
 const init = async (req, res) => {
   const data = [
     {
@@ -27,8 +29,11 @@ const init = async (req, res) => {
 
 const createTodo = async (req, res) => {
   const { task } = req.body;
-  res.json({
+
+  Todo.create({
     task,
+  }).then(() => {
+    res.json({ ms: "Task is Created Done" });
   });
 };
 
