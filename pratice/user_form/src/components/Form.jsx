@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 function htmlForm() {
   const [firstName, setFirstName] = useState("");
@@ -6,7 +7,18 @@ function htmlForm() {
 
   const submitFormHandler = (event) => {
     event.preventDefault();
-    console.log(firstName, lastName);
+    axios
+      .post("http://localhost:3000/form", { firstName, lastName })
+      .then(() => {
+        console.log("Data Inserted");
+        setFirstName("");
+        setLastName("");
+      })
+      .catch((error) => {
+        console.log(error.message);
+        setFirstName("");
+        setLastName("");
+      });
   };
   return (
     <>
