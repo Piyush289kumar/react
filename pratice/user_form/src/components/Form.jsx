@@ -1,6 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 
 function htmlForm() {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+
+  const submitFormHandler = (event) => {
+    event.preventDefault();
+    console.log(firstName, lastName);
+  };
   return (
     <>
       <div className="border border-zinc-500 rounded-2xl px-5 py-8 w-25 my-auto ">
@@ -10,7 +17,8 @@ function htmlForm() {
               type="text"
               name="firstName"
               id="firstName"
-              className="bg-transparent text-xl font-bold border border-zinc-500 rounded-xl px-2 py-1"
+              onChange={(e) => setFirstName(e.target.value)}
+              className="bg-transparent text-xl text-zinc-200 font-bold border border-zinc-500 rounded-xl px-2 py-1"
               placeholder="First Name"
             />
           </div>
@@ -19,12 +27,19 @@ function htmlForm() {
               type="text"
               name="lastName"
               id="lastName"
-              className="bg-transparent text-xl font-bold border border-zinc-500 rounded-xl px-2 py-1"
+              onChange={(e) => setLastName(e.target.value)}
+              className="bg-transparent text-xl text-zinc-200 font-bold border border-zinc-500 rounded-xl px-2 py-1"
               placeholder="Last Name"
             />
           </div>
           <div className="w-full text-center">
-          <button type="submit" className="bg-green-600 text-white rounded-2xl px-4 py-2 font-bold">Submit</button>
+            <button
+              type="submit"
+              onClick={submitFormHandler}
+              className="bg-green-600 text-white rounded-2xl px-4 py-2 font-bold"
+            >
+              Submit
+            </button>
           </div>
         </form>
       </div>
